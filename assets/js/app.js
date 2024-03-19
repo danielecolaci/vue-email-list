@@ -6,19 +6,23 @@ createApp({
         }
     },
     methods: {
-        callApi() {
-            const emailList = [];
-            for (let i = 0; i < 10; i++) {
-                emailList.push(
-                    axios
-                        .get('https://flynn.boolean.careers/exercises/api/random/mail')
-                        .then((response) => {
-                            console.log(response.data.response);
-                        }))
+        callEmailApi() {
+            axios
+                .get('https://flynn.boolean.careers/exercises/api/random/mail')
+                .then((response) => {
+                    /* console.log(response.data.response); */
+                    this.emailList.push(response.data.response)
+                    console.log(this.emailList);
+                })
+        },
+        generateList(n) {
+            for (let i = 0; i < n; i++) {
+                this.callEmailApi();
             }
         }
     },
     mounted() {
-        this.callApi()
+        this.callEmailApi();
+        this.generateList(10);
     }
 }).mount('#app')
