@@ -12,7 +12,7 @@ createApp({
                 .then((response) => {
                     /* console.log(response.data.response); */
                     this.emailList.push(response.data.response)
-                    console.log(this.emailList);
+                    /* console.log(this.emailList); */
                 })
         },
         generateList(n) {
